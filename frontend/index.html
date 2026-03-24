@@ -3,6 +3,7 @@
 
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Retail AI Document Chat</title>
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -10,46 +11,58 @@
 
 <body>
 
-<div class="app">
+<main class="app" aria-label="Retail AI chat application">
 
-<header>
+<header class="app-header">
 <h1>Retail AI Assistant</h1>
-<p>Upload documents and ask intelligent questions</p>
+<p>Upload your store documents and ask context-aware questions</p>
+<div class="app-badges" aria-label="Assistant status and guidance">
+<span class="badge badge-online">Ready</span>
+<span class="badge">Best with product catalogs, policies, and invoices</span>
+</div>
 </header>
 
-<section class="upload-section">
+<section class="upload-section" aria-label="Document upload">
+<label for="pdfFile" class="sr-only">Choose PDF document</label>
+<input type="file" id="pdfFile" accept=".pdf">
 
-<input type="file" id="pdfFile">
-
-<button onclick="uploadPDF()" class="upload-btn">
+<button onclick="uploadPDF()" class="upload-btn" id="uploadBtn">
 Upload Document
 </button>
 
-<p id="uploadStatus"></p>
-
+<p id="uploadStatus" aria-live="polite"></p>
 </section>
 
-<section class="chat-section">
+<section class="chat-section" aria-label="Chat interface">
+<div class="chat-box" id="chatContainer">
+<div class="empty-state" id="emptyState">
+<h2>Start by uploading a retail PDF</h2>
+<p>Then ask questions like inventory trends, pricing notes, return policy details, or supplier information.</p>
+</div>
+</div>
 
-<div class="chat-box" id="chatContainer"></div>
+<div class="quick-prompts" aria-label="Suggested prompts">
+<button type="button" class="prompt-chip" data-prompt="Summarize this document in 5 key points">Summarize document</button>
+<button type="button" class="prompt-chip" data-prompt="What are the key pricing details in this file?">Pricing details</button>
+<button type="button" class="prompt-chip" data-prompt="List important dates and deadlines from this document">Important dates</button>
+</div>
 
 <div class="input-area">
-
-<input 
+<label for="questionInput" class="sr-only">Ask question</label>
+<input
 type="text"
 id="questionInput"
 placeholder="Ask something about your document..."
+autocomplete="off"
 />
 
-<button onclick="askQuestion()" class="send-btn">
+<button onclick="askQuestion()" class="send-btn" id="sendBtn">
 Send
 </button>
-
 </div>
-
 </section>
 
-</div>
+</main>
 
 <script src="script.js"></script>
 
