@@ -243,7 +243,6 @@ scrollbar-width:none;
 width:0;
 height:0;
 }
-
 .message.bot.thinking{
 opacity:0.9;
 animation:pulse 1.3s ease-in-out infinite;
